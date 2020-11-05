@@ -37,18 +37,18 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth, 200);
+  createCanvas(windowWidth,windowHeight);
 
-  trex = createSprite(50,160,20,50);
+  trex = createSprite(50,height-50,20,50);
    trex.addAnimation("running", trex_running);
   trex.addAnimation("collided",trex_collided);
   trex.scale = 0.5;
   
-  ground = createSprite(200,180,400,20);
+  ground = createSprite(200,height-30,400,20);
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
   
-  invisibleGround = createSprite(width/2,190,width,10);
+  invisibleGround = createSprite(width/2,height-20,width,10);
   invisibleGround.visible = false;
   
   //trex.debug = true;
@@ -134,13 +134,13 @@ function spawnClouds() {
   if (frameCount % 60 === 0) {
     cloud = createSprite(width,100,40,10);
     cloud.addImage(cloudImage)
-    cloud.y = Math.round(random(10,60))
+    cloud.y = Math.round(random(height-150,height-100))
     cloud.scale = 0.8;
     cloud.velocityX = -3;
     
     
     //assigning lifetime to the variable
-    cloud.lifetime = 134
+    cloud.lifetime = width/3;
     
     //adjust the depth
     cloud.depth = trex.depth
@@ -151,7 +151,7 @@ function spawnClouds() {
 }
 function spawnOb () {
  if (frameCount % 100 === 0){
-var obstacle = createSprite (width,170,10,10)
+var obstacle = createSprite (width,height-20,10,10)
 obstacle.velocityX = -(4+(score / 100));
 var rar = Math.round(random(1,6));
    switch(rar){
@@ -171,7 +171,7 @@ var rar = Math.round(random(1,6));
 }
    obstacle.scale=0.5;
   obstacleGroup.add(obstacle);
-  obstacle.lifetime=134;
+  obstacle.lifetime=width/4;
   
 }
   }
