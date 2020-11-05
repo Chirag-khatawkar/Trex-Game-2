@@ -79,9 +79,10 @@ function draw() {
      checkpointsound.play();
    } 
      ground.velocityX = -(4+(score / 100)); 
-  if(keyDown("space")&& trex.y >= 160) {
+  if(touches.length>0||keyDown("space")&& trex.y >= height-120) {
     trex.velocityY = -11;
     jumpsound.play();
+    touches = [];
   }
   
   trex.velocityY = trex.velocityY + 0.8 
